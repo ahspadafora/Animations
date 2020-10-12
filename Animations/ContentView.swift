@@ -9,9 +9,21 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var animationAmount: CGFloat = 1.0
+    
     var body: some View {
-        Text("Hello, World!")
+        Button("Tap Me") {
+            self.animationAmount += 1
+        }.padding(50)
+        .foregroundColor(Color.white)
+        .background(Color.red)
+        .clipShape(Circle())
+        .scaleEffect(animationAmount)
+        .animation(.default)
+        .blur(radius: (animationAmount - 1) * 3)
     }
+    
 }
 
 struct ContentView_Previews: PreviewProvider {
