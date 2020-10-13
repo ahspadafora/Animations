@@ -11,11 +11,15 @@ import SwiftUI
 struct ContentView: View {
     
     //@State private var animationAmount: CGFloat = 1.0
+    //@State private var animationAmount: Double = 1.0
     
-    @State private var animationAmount: Double = 1.0
+    
     @State private var enabled = false
     
+    // for the animating gestures
     @State private var dragAmount = CGSize.zero
+    
+    let letters = Array("Hello Blaire")
     
     var body: some View {
         /// interpolating spring animation with 1 second delay
@@ -162,18 +166,53 @@ struct ContentView: View {
  */
         
         // Animating Gestures
+        /*
         LinearGradient(gradient: Gradient(colors: [.yellow, .red]), startPoint: .topLeading, endPoint: .bottomTrailing)
             .frame(width: 300, height: 300)
             .clipShape(RoundedRectangle(cornerRadius: 10))
-        .offset(dragAmount)
+            // implicit animation added to the Linear Gradient
+            //.animation(.spring())
+            .offset(dragAmount)
             .gesture(DragGesture()
                 .onChanged({
+                    
                     self.dragAmount = $0.translation
                 })
                 .onEnded({ _ in
-                    self.dragAmount = CGSize.zero
+                    // explicit animation added to the onChange gesture
+                    withAnimation(.spring()) {
+                        self.dragAmount = CGSize.zero
+                    }
+                    // self.dragAmount = CGSize.zero
                 })
         )
+        */
+        
+        
+        HStack {
+            ForEach(0..<letters.count) { num in
+                Text(String(self.letters[num]))
+                .padding(5)
+                    .font(.title)
+                    .background(self.enabled ? Color.blue: Color.red)
+                    .offset(self.dragAmount)
+                    .animation(Animation.default.delay(Double(num) / 20))
+            }
+        }.gesture(
+            DragGesture()
+                .onChanged{ self.dragAmount = $0.translation }
+                .onEnded({ _ in
+                    self.dragAmount = CGSize.zero
+                    self.enabled.toggle()
+                })
+        )
+        
+        
+        
+        
+        
+        
+        
     }
     
 }
