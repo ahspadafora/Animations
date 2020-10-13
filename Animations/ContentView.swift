@@ -10,7 +10,9 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State private var animationAmount: CGFloat = 1.0
+    //@State private var animationAmount: CGFloat = 1.0
+    
+    @State private var animationAmount: Double = 1.0
     
     var body: some View {
         /// interpolating spring animation with 1 second delay
@@ -96,6 +98,7 @@ struct ContentView: View {
  */
         
         // animation binding
+        /*
         print(animationAmount)
         return VStack {
             Stepper("scale amount", value: $animationAmount.animation(Animation.easeInOut(duration: 1)
@@ -111,6 +114,20 @@ struct ContentView: View {
             .clipShape(Circle())
             .scaleEffect(animationAmount)
         }
+        */
+        
+        // rotation3dEffect
+        Button("Tap Me") {
+            withAnimation(.interpolatingSpring(stiffness: 5, damping: 1)) {
+                self.animationAmount += 360.0
+            }
+        }
+        .padding(50)
+        .foregroundColor(Color.white)
+        .background(Color.red)
+        .clipShape(Circle())
+        .rotation3DEffect(.degrees(animationAmount), axis: (x: 0, y: 1, z: 0))
+        
     }
     
 }
