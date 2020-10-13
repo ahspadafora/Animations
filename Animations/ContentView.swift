@@ -13,6 +13,7 @@ struct ContentView: View {
     //@State private var animationAmount: CGFloat = 1.0
     
     @State private var animationAmount: Double = 1.0
+    @State private var enabled = false
     
     var body: some View {
         /// interpolating spring animation with 1 second delay
@@ -117,6 +118,7 @@ struct ContentView: View {
         */
         
         // rotation3dEffect
+        /*
         Button("Tap Me") {
             withAnimation(.interpolatingSpring(stiffness: 5, damping: 1)) {
                 self.animationAmount += 360.0
@@ -127,7 +129,33 @@ struct ContentView: View {
         .background(Color.red)
         .clipShape(Circle())
         .rotation3DEffect(.degrees(animationAmount), axis: (x: 0, y: 1, z: 0))
+        */
+        // animate button background color & clipShape change
+        /*
+        Button("Tap Me") {
+            withAnimation(.interpolatingSpring(stiffness: 5, damping: 1)) {
+                self.enabled.toggle()
+            }
+        }
+        .padding(50)
+        .foregroundColor(Color.white)
+        .background(enabled ? Color.blue : Color.red)
+        .clipShape(RoundedRectangle(cornerRadius: enabled ? 60 : 0))
+        .animation(.default)
+        */
         
+        // multiple animation modifiers
+        Button("Tap Me") {
+            withAnimation(.interpolatingSpring(stiffness: 5, damping: 1)) {
+                self.enabled.toggle()
+            }
+        }
+        .frame(width: 200, height: 200)
+        .background(enabled ? Color.blue : Color.red)
+        .animation(.default)
+        .foregroundColor(Color.white)
+        .clipShape(RoundedRectangle(cornerRadius: enabled ? 60 : 0))
+        .animation(.interpolatingSpring(stiffness: 10, damping: 1))
     }
     
 }
