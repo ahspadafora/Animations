@@ -15,6 +15,8 @@ struct ContentView: View {
     @State private var animationAmount: Double = 1.0
     @State private var enabled = false
     
+    @State private var dragAmount = CGSize.zero
+    
     var body: some View {
         /// interpolating spring animation with 1 second delay
         /*
@@ -145,6 +147,7 @@ struct ContentView: View {
         */
         
         // multiple animation modifiers
+        /*
         Button("Tap Me") {
             withAnimation(.interpolatingSpring(stiffness: 5, damping: 1)) {
                 self.enabled.toggle()
@@ -156,6 +159,21 @@ struct ContentView: View {
         .foregroundColor(Color.white)
         .clipShape(RoundedRectangle(cornerRadius: enabled ? 60 : 0))
         .animation(.interpolatingSpring(stiffness: 10, damping: 1))
+ */
+        
+        // Animating Gestures
+        LinearGradient(gradient: Gradient(colors: [.yellow, .red]), startPoint: .topLeading, endPoint: .bottomTrailing)
+            .frame(width: 300, height: 300)
+            .clipShape(RoundedRectangle(cornerRadius: 10))
+        .offset(dragAmount)
+            .gesture(DragGesture()
+                .onChanged({
+                    self.dragAmount = $0.translation
+                })
+                .onEnded({ _ in
+                    self.dragAmount = CGSize.zero
+                })
+        )
     }
     
 }
