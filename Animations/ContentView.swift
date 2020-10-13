@@ -73,6 +73,7 @@ struct ContentView: View {
         
         // use repeatForever and onAppear to create animations that start & last during a views lifetime
         // adds a red circle path around the botton the continuously grows
+        /*
         Button("Tap Me") {
             //self.animationAmount += 1
         }
@@ -91,6 +92,24 @@ struct ContentView: View {
         )
         .onAppear{
             self.animationAmount = 2
+        }
+ */
+        
+        // animation binding
+        print(animationAmount)
+        return VStack {
+            Stepper("scale amount", value: $animationAmount.animation(Animation.easeInOut(duration: 1)
+            .repeatCount(3, autoreverses: true)), in: 1...10)
+            
+            Spacer()
+            Button("Tap Me") {
+                self.animationAmount += 1
+            }
+            .padding(50)
+            .foregroundColor(Color.white)
+            .background(Color.red)
+            .clipShape(Circle())
+            .scaleEffect(animationAmount)
         }
     }
     
