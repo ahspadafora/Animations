@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA037B8F25368040000A1BCA /* CornerRotateModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA037B8E25368040000A1BCA /* CornerRotateModifier.swift */; };
 		BA19F3092533EAD300B072D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA19F3082533EAD300B072D9 /* AppDelegate.swift */; };
 		BA19F30B2533EAD300B072D9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA19F30A2533EAD300B072D9 /* SceneDelegate.swift */; };
 		BA19F30D2533EAD300B072D9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA19F30C2533EAD300B072D9 /* ContentView.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BA037B8E25368040000A1BCA /* CornerRotateModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerRotateModifier.swift; sourceTree = "<group>"; };
 		BA19F3052533EAD300B072D9 /* Animations.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Animations.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA19F3082533EAD300B072D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BA19F30A2533EAD300B072D9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				BA19F3132533EAD700B072D9 /* LaunchScreen.storyboard */,
 				BA19F3162533EAD700B072D9 /* Info.plist */,
 				BA19F3102533EAD700B072D9 /* Preview Content */,
+				BA037B8E25368040000A1BCA /* CornerRotateModifier.swift */,
 			);
 			path = Animations;
 			sourceTree = "<group>";
@@ -146,6 +149,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA037B8F25368040000A1BCA /* CornerRotateModifier.swift in Sources */,
 				BA19F3092533EAD300B072D9 /* AppDelegate.swift in Sources */,
 				BA19F30B2533EAD300B072D9 /* SceneDelegate.swift in Sources */,
 				BA19F30D2533EAD300B072D9 /* ContentView.swift in Sources */,
