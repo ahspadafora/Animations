@@ -14,12 +14,16 @@ struct ContentView: View {
     //@State private var animationAmount: Double = 1.0
     
     
-    @State private var enabled = false
+    //@State private var enabled = false
     
     // for the animating gestures
-    @State private var dragAmount = CGSize.zero
+    /*
+     @State private var dragAmount = CGSize.zero
+     let letters = Array("Hello Blaire")
+    */
     
-    let letters = Array("Hello Blaire")
+    // for showing and hiding views with transitions
+    @State private var isShowingRed = false
     
     var body: some View {
         /// interpolating spring animation with 1 second delay
@@ -186,8 +190,6 @@ struct ContentView: View {
                     // self.dragAmount = CGSize.zero
                 })
         )
-        */
-        
         
         HStack {
             ForEach(0..<letters.count) { num in
@@ -206,9 +208,23 @@ struct ContentView: View {
                     self.enabled.toggle()
                 })
         )
+        */
         
+        // Showing and hiding views with transitions
         
-        
+        VStack {
+            Button("Tap Me"){
+                withAnimation { self.isShowingRed.toggle() }
+                //self.isShowingRed.toggle()
+            }
+            if isShowingRed {
+                Rectangle()
+                .fill(Color.red)
+                .frame(width: 200, height: 200)
+                .transition(.asymmetric(insertion: .scale, removal: .opacity))
+            }
+            
+        }
         
         
         
